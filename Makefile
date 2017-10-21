@@ -2,8 +2,8 @@
 CFLAGS = -g -Wall -Werror -std=c99
 CC = gcc
 
-csim: csim.c cachelab.c cachelab.h
-	$(CC) $(CFLAGS) -o csim csim.c cachelab.c -lm
+csim: csim.c
+	$(CC) $(CFLAGS) -o csim csim.c -lm
 
 clean:
 	rm -rf *.o

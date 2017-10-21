@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <strings.h>
 #include <limits.h>
-#include "cachelab.h"
+#include <assert.h>
 
 typedef unsigned long long int address; //store address
 
@@ -33,6 +33,16 @@ typedef struct{
 } address_struct; //currently unused
 
 int vflag =0; //verbose flag
+
+
+//Summarize cache simulation stats at end
+void printSummary(int hits, int misses, int evictions){
+    printf("hits:%d misses:%d evictions:%d\n", hits, misses, evictions);
+    FILE* output_fp = fopen(".csim_results", "w");
+    assert(output_fp);
+    fprintf(output_fp, "%d %d %d\n", hits, misses, evictions);
+    fclose(output_fp);
+}
 
 int main(int argc, char **argv) {
     //set cache up reading in input
